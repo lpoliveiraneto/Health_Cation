@@ -47,20 +47,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/atividadeFisica_imgView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/medalhas_imgview"
         app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/heartbeat" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/medalhas_imgview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -77,9 +77,9 @@
         android:text="Batimentos"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/atividadeFisica_imgView"
+        app:layout_constraintStart_toStartOf="@+id/atividadeFisica_imgView"
+        app:layout_constraintTop_toBottomOf="@+id/atividadeFisica_imgView" />
 
     <TextView
         android:id="@+id/textView5"
@@ -89,25 +89,25 @@
         android:text="Medalhas"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintEnd_toEndOf="@+id/medalhas_imgview"
+        app:layout_constraintStart_toStartOf="@+id/medalhas_imgview"
+        app:layout_constraintTop_toBottomOf="@+id/medalhas_imgview" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/alimentacao_imgview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintEnd_toStartOf="@+id/rank_imgview"
         app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/alimentacao_saudavel" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/rank_imgview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -126,9 +126,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/alimentacao_imgview"
+        app:layout_constraintStart_toStartOf="@+id/alimentacao_imgview"
+        app:layout_constraintTop_toBottomOf="@+id/alimentacao_imgview"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -141,9 +141,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/rank_imgview"
+        app:layout_constraintStart_toStartOf="@+id/rank_imgview"
+        app:layout_constraintTop_toBottomOf="@+id/rank_imgview"
         app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
