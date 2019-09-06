@@ -16,6 +16,8 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.AccessToken;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_login;
     private Button btn_cadastro;
     private AccessToken acessToken;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +57,20 @@ public class MainActivity extends AppCompatActivity {
         final LoginButton loginButton = findViewById(R.id.btn_facebook);
         callbackManager = CallbackManager.Factory.create();
 
+        loginButton.setReadPermissions("public_profile");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
                         try{
+                            String id = object.getString("id");
                             String name = object.getString("name");
                             String email = object.getString("email");
+                           // getNameUser();
+                           // executeGraphRequest(loginResult.getAccessToken().getUserId());
                             Toast.makeText(getApplicationContext(), "Name" + name + "Email"+email, Toast.LENGTH_LONG).show();
                         }catch(JSONException e ){
                             e.printStackTrace();
@@ -89,6 +96,44 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("TAG", "onError");
             }
         });
+    }
+
+    /*private void executeGraphRequest(final String userId){
+        GraphRequest request =new GraphRequest(AccessToken.getCurrentAccessToken(), userId, null, HttpMethod.GET, new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse response) {
+                Log.i("FACEBOOK", response.getJSONObject().toString());
+                Log.i("FACEBOOK", Profile.getCurrentProfile().toString());
+            }
+        });
+
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id, name, email, gender, birthday");
+        request.setParameters(parameters);
+        request.executeAsync();
+
+    }*/
+
+    private void getNameUser(){
+        Bundle params = new Bundle();
+        params.putString("id", "name");
+        new GraphRequest(
+                AccessToken.getCurrentAccessToken(), "/?fields=name",
+                params,
+                HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    @Override
+                    public void onCompleted(GraphResponse response) {
+                        Log.e("Response 2", response + "");
+                        try {
+                            name = response.getJSONObject().getString("name");
+                        }catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        ).executeAsync();
+
     }
 
     private void configuraButtonLogin() {
@@ -122,8 +167,7 @@ public class MainActivity extends AppCompatActivity {
     private void configuracoesDeCampo() {
         editText_login = (EditText)findViewById(R.id.editText_login);
         editText_senha = (EditText)findViewById(R.id.editText_password);
-        btn_login = (Button) findViewById(R
-                .id.btn_login);
+        btn_login = (Button) findViewById(R.id.btn_login);
         btn_cadastro =findViewById(R.id.btn_cadastro);
 
     }
@@ -135,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
        if(!isLoggedIn()){
             Intent it = new Intent(MainActivity.this, MenuInicialActivity.class);
+            it.putExtra("name", name);
             startActivity(it);
         }
     }

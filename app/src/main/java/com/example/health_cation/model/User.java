@@ -4,6 +4,7 @@ public class User {
 
     private int id;
     private String nome;
+    private int idade;
     private String email;
     private String senha;
     private float altura;
@@ -22,6 +23,9 @@ public class User {
         this.contato_parente = contato_parente;
 
     }
+     public User(){
+
+     }
 
     public int getId() {
         return id;
@@ -33,6 +37,14 @@ public class User {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public String getEmail() {
@@ -81,5 +93,13 @@ public class User {
 
     public void setContato_parente(String contato_parente) {
         this.contato_parente = contato_parente;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean temIdValido() {
+        return id>0;
     }
 }

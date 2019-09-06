@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.AtividadeFisicaActivity"></activity>
+        <activity android:name=".ui.activity.BagdeActivity"></activity>
+        <activity android:name=".ui.activity.AtividadeFisicaActivity" />
         <activity android:name=".ui.activity.AlimentacaoActivity" />
         <activity android:name=".ui.activity.CadastroActivity" />
         <activity android:name=".ui.activity.MenuInicialActivity" />

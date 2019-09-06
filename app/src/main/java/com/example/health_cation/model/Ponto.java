@@ -4,7 +4,7 @@ public class Ponto {
 
     private int idPontos;
     private String ponto;
-    private int valorDoPonto;
+    private int valorDoPonto = 0;
     private String descAtividade;
     private User user;
 
